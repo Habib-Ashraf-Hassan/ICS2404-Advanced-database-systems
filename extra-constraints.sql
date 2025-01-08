@@ -2,6 +2,9 @@
 ALTER TABLE Results
 ADD CONSTRAINT results_student_unit_unique UNIQUE (student_ID, unit_ID);
 
+-- Change delimiter temporarily
+DELIMITER $$
+
 -- Create a trigger that checks fee balance before allowing unit registration
 CREATE TRIGGER check_fee_balance
 BEFORE INSERT ON StudentUnitRegistration
@@ -32,4 +35,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Student has unpaid fee balance. Registration not allowed.';
     END IF;
-END;
+END$$
+
+-- Change delimiter back to semicolon
+DELIMITER ;
