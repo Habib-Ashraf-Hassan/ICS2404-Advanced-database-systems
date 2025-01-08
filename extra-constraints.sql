@@ -39,3 +39,24 @@ END$$
 
 -- Change delimiter back to semicolon
 DELIMITER ;
+
+-- Create Triggers on `Results` to autmatically grade the Unit results
+--
+DELIMITER $$
+CREATE TRIGGER `before_insert_update_results` BEFORE INSERT ON `Results` FOR EACH ROW BEGIN
+    IF NEW.marks >= 70 THEN
+        SET NEW.grade = 'A';
+    ELSEIF NEW.marks >= 60 THEN
+        SET NEW.grade = 'B';
+    ELSEIF NEW.marks >= 50 THEN
+        SET NEW.grade = 'C';
+    ELSEIF NEW.marks >= 40 THEN
+        SET NEW.grade = 'D';
+    ELSE
+        SET NEW.grade = 'E';
+    END IF;
+END
+$$
+DELIMITER ;
+
+-- 
