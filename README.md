@@ -48,7 +48,7 @@ The centralized database will store the following entities:
 ---
 
 ### The ER diagram
-![University student portal ER-diagram.](ER-diagrams/ICS2404-ER-dgm.png)
+![University student portal ER-diagram.](ER-diagrams/ICS2404-ER-updated2.png)
 
 # University Database Overview
 
