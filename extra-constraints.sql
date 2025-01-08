@@ -40,7 +40,7 @@ END$$
 -- Change delimiter back to semicolon
 DELIMITER ;
 
--- Create Triggers on `Results` to autmatically grade the Unit results
+-- Create Triggers on `Results` to automatically grade the Unit results
 --
 DELIMITER $$
 CREATE TRIGGER `before_insert_update_results` BEFORE INSERT ON `Results` FOR EACH ROW BEGIN
